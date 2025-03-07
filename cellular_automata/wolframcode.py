@@ -6,7 +6,7 @@ import itertools
 
 #perosnal favourite codes.
 # 99,105,62 
-wolfram_code = 77 
+wolfram_code = 105 
 loop = False
 # wolfram_code = np.random.randint(0,255) 
 
@@ -62,11 +62,14 @@ def update(frame):
 an = animation.FuncAnimation(
     fig,
     update,
-    frames=itertools.count(),
+    frames=max_frames,
     interval=10,
     cache_frame_data=False,
     blit=True,
 )
 
 ax.axis('off')
+fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
+fig.set_size_inches(5, 5) 
+an.save("anims/wolframcode105.gif", writer="pillow", fps=30)
 plt.show()

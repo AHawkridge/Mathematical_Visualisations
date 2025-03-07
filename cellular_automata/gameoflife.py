@@ -67,5 +67,6 @@ an = animation.FuncAnimation(
     blit=True,
 )
 ax.axis('off')
+
 an.save("anims/game_of_life.gif", writer="pillow", fps=30)
 plt.show()

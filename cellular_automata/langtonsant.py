@@ -12,10 +12,12 @@ blue = "#46a9b4"
 
 custom_cmap = ListedColormap([background, yellow, red, blue])
 N = 50
+
 fig, ax = plt.subplots()
+fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
+fig.set_size_inches(5, 5) 
 # ant [x,y,rotation,team]
-ants = [[25,25,0,1]]
-        # ,[5,10,0,2],[5,15,0,3],[5,20,0,1],[5,25,0,2],[5,30,0,3]]
+ants = [[25,5,0,2],[25,15,0,3],[25,25,0,1],[25,35,0,2],[25,45,0,3]]
 
 ax.axis('off')
 grid = np.zeros([N, N]).reshape(N, N)
@@ -59,6 +61,8 @@ def update(frame):
 
 
 an = animation.FuncAnimation(
-    fig, update, frames=itertools.count(), interval=0, cache_frame_data=False, blit=True
+    fig, update, frames=3000, interval=0, cache_frame_data=False, blit=True
 )
+
+an.save("anims/ants.gif", writer="pillow", fps=60)
 plt.show()
