@@ -5,15 +5,17 @@ from matplotlib.colors import ListedColormap
 import itertools
 
 fig, ax = plt.subplots()
-
 # Set custom colours.
 background = "#2e261f"
 foreground = "#ebdac6"
 yellow = "#da9a1b"
+fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
+fig.set_size_inches(5, 5) 
+ax.set_aspect("equal")
 custom_cmap = ListedColormap([background, foreground])
 N = 100
 
-grid = np.random.choice([1, 0], N * N, p=[0.4, 0.6]).reshape(N, N)
+grid = np.random.choice([1, 0], N * N, p=[0.2, 0.8]).reshape(N, N)
 
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
@@ -50,7 +52,7 @@ def update(frameNum):
                     newGrid[i, j] = 1
     grid = newGrid.copy()
     img.set_data(grid)
-    text.set_text(f"alive = {alive}")
+    # text.set_text(f"alive = {alive}")
     return img, text
 
 
@@ -59,11 +61,11 @@ def update(frameNum):
 an = animation.FuncAnimation(
     fig,
     update,
-    frames=itertools.count(),
-    interval=30,
+    frames=300,#itertools.count(),
+    interval=50,
     cache_frame_data=False,
     blit=True,
 )
-
 ax.axis('off')
+an.save("anims/game_of_life.gif", writer="pillow", fps=30)
 plt.show()
