@@ -4,6 +4,13 @@ These visualations are created using the matplotlib.animation library.
 
 At the moment the main contents of this repository is cellular automata, as they provide interesting visualiations.
 
+
+
+## 
+
+
+![Lissahouse curve gif](./anims/lissajous.gif)
+
 ## Conways game of life.
 
 Cells can be in one of two states, alive or dead. The state in which the cell is in is dependdant on the number of neighbours around the cell.
