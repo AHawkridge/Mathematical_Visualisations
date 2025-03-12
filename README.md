@@ -6,10 +6,11 @@ At the moment the main contents of this repository is cellular automata, as they
 
 
 
-## 
+## Lissajouse curves.
 
+Shows the superposition of two sine waves which are perpendicular to each other. By changing the ratio between the angular frequencies of the two waves, the illusion of a three dimensional shape is created.
 
-![Lissahouse curve gif](./anims/lissajous.gif)
+![Lissajouse curve gif](./anims/lissajous.gif)
 
 ## Conways game of life.
 
