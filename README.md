@@ -12,6 +12,12 @@ Shows the superposition of two sine waves which are perpendicular to each other.
 
 ![Lissajouse curve gif](./anims/lissajous.gif)
 
+## Rose (Rhodonea) curves.
+Sinusoidal patterns that create the shapes of roses, they can be specified by a number of a number of polar equations, these were created using the basic equation $r = a cos(k\theta)$. The shape of the rose is dependant on the angular frequency $k = \frac{n}{d}$.
+
+![Rose curve gif](./anims/rose.gif)
+
+
 ## Conways game of life.
 
 Cells can be in one of two states, alive or dead. The state in which the cell is in is dependdant on the number of neighbours around the cell.
