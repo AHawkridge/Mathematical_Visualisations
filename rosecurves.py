@@ -65,5 +65,5 @@ ani = animation.FuncAnimation(
 )
 
 fig.set_size_inches(5, 5)
-ani.save("anims/rose.gif", writer="pillow", fps=30)
+# ani.save("anims/rose.gif", writer="pillow", fps=30)
 plt.show()

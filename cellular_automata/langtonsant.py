@@ -64,5 +64,5 @@ an = animation.FuncAnimation(
     fig, update, frames=3000, interval=0, cache_frame_data=False, blit=True
 )
 
-an.save("anims/ants.gif", writer="pillow", fps=60)
+# an.save("anims/ants.gif", writer="pillow", fps=60)
 plt.show()

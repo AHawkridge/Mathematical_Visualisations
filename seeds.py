@@ -13,9 +13,15 @@ fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
 fig.set_size_inches(5, 5) 
 ax.set_aspect("equal")
 custom_cmap = ListedColormap(['white', 'black'])
-N = 100
+N = 1
+0
 
-grid = np.random.choice([1, 0], N * N, p=[0.2, 0.8]).reshape(N, N)
+grid = np.zeros([N, N]).reshape(N, N)
+
+grid[50,50] = 1
+grid[51,50] = 1
+grid[51,51] = 1
+grid[51,49] = 1
 
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
@@ -28,7 +34,6 @@ img = ax.imshow(grid, cmap=custom_cmap, interpolation="none")
 
 def update(frameNum):
     global grid
-    alive = 0
     newGrid = grid.copy()
     for i in range(N):
         for j in range(N):
@@ -43,30 +48,23 @@ def update(frameNum):
                 + grid[(i + 1) % N, (j + 1) % N]
             )
 
-            if grid[i, j] == 1:
-                alive += 1
-                if (total < 2) or (total > 3):
-                    newGrid[i, j] = 0
+            if total == 2: 
+                newGrid[i, j] = 1
             else:
-                if total == 3:
-                    newGrid[i, j] = 1
+                newGrid[i,j]= 0
+
     grid = newGrid.copy()
     img.set_data(grid)
-    # text.set_text(f"alive = {alive}")
     return img, text
-
-
-
 
 an = animation.FuncAnimation(
     fig,
     update,
     frames=itertools.count(),
-    interval=10,
+    interval=30,
     cache_frame_data=False,
     blit=True,
 )
 ax.axis('off')
-
 # an.save("anims/game_of_life.gif", writer="pillow", fps=30)
 plt.show()

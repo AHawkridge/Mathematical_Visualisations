@@ -6,9 +6,9 @@ import itertools
 
 #perosnal favourite codes.
 # 99,105,62 
-wolfram_code = 105 
+wolfram_code = 1
 loop = False
-# wolfram_code = np.random.randint(0,255) 
+wolfram_code = np.random.randint(0,255) 
 
 code_str = np.binary_repr(wolfram_code, width=8)
 code = [int(bit) for bit in code_str][::-1]
@@ -31,7 +31,7 @@ grid = np.zeros((max_frames, N))
 
 grid[0] = row
 img = ax.imshow(grid, cmap=custom_cmap, interpolation="none", aspect="auto")
-
+loop = True
 
 def update(frame):
     global row, grid, frame_index
@@ -47,13 +47,13 @@ def update(frame):
 
     row = new_row
 
-    if frame_index < max_frames:
-        grid[frame_index, :] = row
-        frame_index += 1
+    if frame < max_frames:
+        grid[frame, :] = row
     elif loop:
         grid = np.roll(grid, -1, axis=0)
         grid[-1, :] = row
         
+
 
     img.set_data(grid)
     return (img,)
@@ -62,7 +62,7 @@ def update(frame):
 an = animation.FuncAnimation(
     fig,
     update,
-    frames=max_frames,
+    frames=itertools.count(),
     interval=10,
     cache_frame_data=False,
     blit=True,
@@ -71,5 +71,5 @@ an = animation.FuncAnimation(
 ax.axis('off')
 fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=None, hspace=None)
 fig.set_size_inches(5, 5) 
-an.save("anims/wolframcode105.gif", writer="pillow", fps=30)
+# an.save("anims/wolframcode105.gif", writer="pillow", fps=30)
 plt.show()
